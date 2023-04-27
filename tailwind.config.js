@@ -1,3 +1,4 @@
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -8,11 +9,24 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'hero-desktop': "url('/images/bg-header-desktop.svg')",
+        'hero-mobile': "url('/images/bg-header-mobile.svg')"
+      },
+      colors: {
+        cyan: {
+          // /* Neutral (Filter Tablets) */
+          100: '#eef6f6',
+          // /* Neutral Background */
+          200: '#effafa',
+          // /* Desaturated Dark Cyan */
+          500: '#5ba4a4',
+          // --gray-cyan
+          700: '#7b8e8e',
+          // --dark-cyan
+          900: '#2c3a3a',
+        },
       },
     },
   },
   plugins: [],
-}
+};

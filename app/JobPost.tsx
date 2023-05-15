@@ -22,17 +22,23 @@ type JobPost = {
 const JobPost = ({job}: {job: JobPost}) => {
   return (
     <div
-      className={`bg-white w-3/4 mb-5 p-5 shadow-xl rounded-md max-w-4xl ${
+      className={`relative flex bg-white xs:w-10/12 sm:w-3/4 mb-5 p-5 mt-6 sm:mt-0 shadow-xl rounded-md max-w-4xl ${
         job.featured && 'border-l-4 border-cyan-500'
       }`}
     >
-      <div className='flex justify-between'>
+      <div className='absolute -top-7 sm:hidden'>
+        <div className='h-12 w-12 relative'>
+          <Image src={job.logo} fill alt='company logo' />
+        </div>
+      </div>
+
+      <div className='justify-between flex-grow flex flex-col md:flex-row min-w-full'>
         <div className='flex items-center'>
           {/* image */}
-          <div className='h-12 w-12 relative'>
+          <div className='hidden sm:block h-12 w-12 relative'>
             <Image src={job.logo} fill alt='company logo' />
           </div>
-          <div className='flex flex-col pl-3'>
+          <div className='flex flex-col pl-3 pt-3'>
             {/* company w/tags new/featured */}
             <div className='flex items-center'>
               <h4 className='text-xs text-cyan-500 font-bold mr-2'>
@@ -52,7 +58,9 @@ const JobPost = ({job}: {job: JobPost}) => {
             </div>
             {/* title */}
             <div className='py-1'>
-              <h3 className='text-black font-bold text-sm cursor-pointer hover:text-cyan-500'>{job.position}</h3>
+              <h3 className='text-black font-bold text-sm cursor-pointer hover:text-cyan-500'>
+                {job.position}
+              </h3>
             </div>
             <div className='flex items-center justify-between'>
               {/* posting date */}
@@ -79,7 +87,8 @@ const JobPost = ({job}: {job: JobPost}) => {
           </div>
         </div>
         {/* skills tags */}
-        <div className='flex flex-wrap items-center'>
+        <div className='w-full border-cyan-700 border mt-4 md:hidden' />
+        <div className='flex flex-wrap items-center py-3'>
           {job.languages.map((skill, index) => (
             <SkillsChip text={skill} key={index} />
           ))}

@@ -4,9 +4,11 @@ import FilterChip from './FilterChip';
 const FilterBand = ({
   filters,
   handleClearFilter,
+  handleRemoveFilter,
 }: {
   filters: string[];
   handleClearFilter: () => void;
+  handleRemoveFilter: (filterName: string) => void;
 }) => {
   return (
     <>
@@ -14,7 +16,7 @@ const FilterBand = ({
         <div className='bg-white w-full max-h-20 px-4 flex items-center xs:w-10/12 sm:w-3/4 shadow-xl rounded-md max-w-4xl'>
           <div className='flex flex-wrap flex-grow py-2'>
             {filters.map((filter, index) => (
-              <FilterChip text={filter} key={index} />
+              <FilterChip text={filter} key={index} handleRemoveFilter={handleRemoveFilter} />
             ))}
           </div>
           <div className=''>

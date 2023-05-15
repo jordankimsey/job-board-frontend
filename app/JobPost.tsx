@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import Image from 'next/image';
 import SkillsChip from './SkillsChip';
 import Chip from './Chip';
@@ -19,7 +19,13 @@ type JobPost = {
   tools: string[];
 }
 
-const JobPost = ({job}: {job: JobPost}) => {
+const JobPost = ({
+  job,
+  setFilters,
+}: {
+  job: JobPost;
+  setFilters: Dispatch<SetStateAction<string[]>>;
+}) => {
   return (
     <div
       className={`relative flex bg-white xs:w-10/12 sm:w-3/4 mb-5 p-5 mt-6 sm:mt-0 shadow-xl rounded-md max-w-4xl ${
@@ -90,10 +96,10 @@ const JobPost = ({job}: {job: JobPost}) => {
         <div className='w-full border-cyan-700 border mt-4 md:hidden' />
         <div className='flex flex-wrap items-center py-3'>
           {job.languages.map((skill, index) => (
-            <SkillsChip text={skill} key={index} />
+            <SkillsChip text={skill} key={index} setFilters={setFilters}/>
           ))}
           {job.tools.map((tool, index) => (
-            <SkillsChip text={tool} key={index} />
+            <SkillsChip text={tool} key={index} setFilters={setFilters}/>
           ))}
         </div>
       </div>
